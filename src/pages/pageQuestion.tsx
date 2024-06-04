@@ -11,35 +11,43 @@ import AnswerQuestion from '../components/AnswerQuestion';
 import AnswerShowcase from '../components/AnswerShowcase';
 import ProviderContext from '../context/ProviderContext';
 import AccountContext from '../context/AccountContext';
-import { AnswersMap } from '../pieces/Realm.types';
+import { AnswersMap, Question } from '../pieces/Realm.types';
 import { parseJSONResponse } from '../pieces/supportFuns';
 
 const PageQuestion = () => {
     const location = useLocation();
     const qData = location.state?.qData;
-    useEffect(() => { console.log(qData) }, [])
+    const [question, setQuestion] = useState<Question>(qData)
     const { provider } = useContext(ProviderContext);
     const { address } = useContext(AccountContext);
     const [answers, setAnswers] = useState<AnswersMap>({} as AnswersMap)
 
     useEffect(() => {
         GetAnswers()
-    }, [])
+        const savedQuestion = localStorage.getItem('savedQuestion');
+        if (savedQuestion) {
+            setQuestion(JSON.parse(savedQuestion) as Question);
+        }
+        return () => {
+            localStorage.setItem('savedQuestion', JSON.stringify(qData));
+        };
+    }, [location, address])
 
     // Calls contract to get exam data
     const GetAnswers = async () => {
         if (provider !== null && address !== "") {
             const fetchData = async () => {
                 if (provider && address != null) {
-                    provider.evaluateExpression('gno.land/r/dev/gnowledge', `GetAnswers("${qData.id}")`)
+                    provider.evaluateExpression('gno.land/r/dev/gnowledge', `GetAnswers("${question.id}")`)
                         .then((response: any) => parseJSONResponse(response))
                         .then((response: string) => JSON.parse(response) as AnswersMap)
-                        .then((response: AnswersMap) => { setAnswers(response); })
+                        .then((response: AnswersMap) => { 
+                            setAnswers(response); 
+                        })
                         .catch((error: any) => console.log(error));
                 };
             };
             fetchData();
-            console.log(answers);
         }
     }
 
@@ -52,32 +60,32 @@ const PageQuestion = () => {
                         <Heading level={1}>Gnowledge</Heading>
                         <Divider />
                     </Container>
-                    <Container style={{backgroundColor: "white", padding: "10px"  }}>
+                    <Container style={{ backgroundColor: "white", padding: "10px" }}>
                         <FlexboxGrid style={{ alignItems: "center" }}>
                             <FlexboxGridItem colspan={2} style={{ border: "3px solid black", padding: "10px" }}>
                                 <Heading level={3}>
-                                    {qData.score}
+                                    {question.score}
                                 </Heading>
                             </FlexboxGridItem>
                             <FlexboxGridItem colspan={22} style={{ padding: "0 20px" }}>
                                 <Heading level={2}>
-                                    {qData.question}
+                                    {question.question}
                                 </Heading>
                             </FlexboxGridItem>
                         </FlexboxGrid>
                         <FlexboxGrid>
                             <FlexboxGrid.Item colspan={12}>
                                 <p>
-                                    [Refers to: {qData.topics.substring(1, qData.topics.length - 1)}]
+                                    [Refers to: {question.topics.substring(1, question.topics.length - 1)}]
                                 </p>
                             </FlexboxGrid.Item>
 
                             <FlexboxGrid.Item colspan={12}>
                                 <p>
-                                    by {qData.author},
+                                    by {question.author},
                                 </p>
                                 <p>
-                                    on {qData.createdOn}
+                                    on {question.createdOn}
                                 </p>
                             </FlexboxGrid.Item>
                         </FlexboxGrid>
@@ -85,9 +93,9 @@ const PageQuestion = () => {
                     {
                         answers != {} as AnswersMap ? Object.entries(answers).map(key => {
                             let [id, a] = key;
-                            return <AnswerShowcase a={a} />
+                            return <AnswerShowcase a={a} key={id}/>
                         }) : <></>}
-                    <AnswerQuestion qId={qData.id} />
+                    <AnswerQuestion qId={question.id} />
 
                 </FlexboxGrid.Item>
 
