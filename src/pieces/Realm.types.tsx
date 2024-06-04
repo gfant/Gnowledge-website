@@ -3,6 +3,7 @@ export interface Question {
   question: string;
   score: number;
   author: string;
+  id: string;
   createdOn: string;
 }
 

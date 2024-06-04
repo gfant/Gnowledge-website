@@ -3,7 +3,7 @@ import { GnoWSProvider } from '@gnolang/gno-js-client';
 import { IAccountContext } from './context/accountContext.types.js';
 import { IProviderContext } from './context/providerContext.types.js';
 import AccountContext from './context/AccountContext';
-
+import "./style.css"
 import ProviderContext from './context/ProviderContext';
 
 import Config from './config';
@@ -52,7 +52,7 @@ const App = () => {
       element: <PageMember />,
     },
     {
-      path: "/question",
+      path: "/question/:questionId",
       element: <PageQuestion />,
     },
 
