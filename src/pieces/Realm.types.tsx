@@ -11,11 +11,18 @@ export interface QuestionsMap {
   [key: string]: Question;
 }
 
+export interface Answer {
+  response: string;
+  score: string;
+  author: string;
+  createdOn: string;
+}
+
+export interface AnswersMap {
+  [key: string]: Answer;
+}
+
 export interface User {
   title: string;
   questions: string;
-}
-
-export interface Answer {
-  content: string;
 }
