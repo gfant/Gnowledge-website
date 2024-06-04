@@ -37,9 +37,9 @@ const AnswerShowcase = ({ a }: { a: Answer }) => {
                 <Row>
                     <Col></Col>
                     <Col xs={6} xsPull={18}>
-                        <a href={"member/" + a.author}>
+                    <Link to={`/member/${a.author}`} state={{ address: a.author }}>
                             {author}
-                        </a>, {a.createdOn}
+                        </Link>, {a.createdOn}
                     </Col>
                 </Row>
             </Grid>

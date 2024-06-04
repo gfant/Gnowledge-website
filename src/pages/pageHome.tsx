@@ -5,6 +5,7 @@ import 'rsuite/Heading/styles/index.css';
 import 'rsuite/HeadingGroup/styles/index.css';
 import Questions from '../components/Questions';
 import Connect from '../services/adena/connectButton';
+import { Link } from 'react-router-dom';
 
 const PageHome = () => {
     return (
@@ -13,11 +14,13 @@ const PageHome = () => {
                 <FlexboxGrid.Item colspan={6}></FlexboxGrid.Item>
                 <FlexboxGrid.Item colspan={12}>
                     <Container>
-                        <Heading level={1}>Gnowledge</Heading>
-                        <Questions/>
+                        <Link to="/">
+                            <Heading level={1}>Gnowledge</Heading>
+                        </Link>
+                        <Questions />
                     </Container>
                 </FlexboxGrid.Item>
-                <FlexboxGrid.Item colspan={6}><Connect/></FlexboxGrid.Item>
+                <FlexboxGrid.Item colspan={6}><Connect /></FlexboxGrid.Item>
             </FlexboxGrid>
         </div>
     );

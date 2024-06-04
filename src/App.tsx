@@ -48,7 +48,7 @@ const App = () => {
       element: <PageHome />,
     },
     {
-      path: "/member",
+      path: "/member/:address",
       element: <PageMember />,
     },
     {
