@@ -11,6 +11,7 @@ import Config from './config';
 import PageHome from './pages/pageHome';
 import PageMember from './pages/pageMember';
 import PageQuestion from './pages/pageQuestion';
+import PageMakeQuestion from './pages/pageMakeQuestion';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -52,10 +53,13 @@ const App = () => {
       element: <PageMember />,
     },
     {
+      path: "/make-question",
+      element: <PageMakeQuestion />,
+    },
+    {
       path: "/question/:questionId",
       element: <PageQuestion />,
     },
-
   ])
 
   return (
