@@ -13,7 +13,7 @@ export interface QuestionsMap {
 
 export interface Answer {
   response: string;
-  score: string;
+  score: number;
   author: string;
   createdOn: string;
 }

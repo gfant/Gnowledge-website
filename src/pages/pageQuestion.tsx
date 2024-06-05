@@ -14,6 +14,7 @@ import AccountContext from '../context/AccountContext';
 import { AnswersMap, Question } from '../pieces/Realm.types';
 import { parseJSONResponse } from '../pieces/supportFuns';
 import { SideBar } from '../components/SideBar/SideBar';
+import ShowScoreAndVote from '../components/ShowScoreAndVote';
 
 const PageQuestion = () => {
     const location = useLocation();
@@ -67,11 +68,7 @@ const PageQuestion = () => {
                     </Container>
                     <Container style={{ backgroundColor: "white", padding: "10px" }}>
                         <FlexboxGrid style={{ alignItems: "center" }}>
-                            <FlexboxGridItem colspan={2} style={{ border: "3px solid black", padding: "10px" }}>
-                                <Heading level={3}>
-                                    {question.score}
-                                </Heading>
-                            </FlexboxGridItem>
+                        <ShowScoreAndVote qId={question.id} id={question.id} answerOrQuestion={"Question"} score={question.score}/>
                             <FlexboxGridItem colspan={22} style={{ padding: "0 20px" }}>
                                 <Heading level={2}>
                                     {question.question}
@@ -98,7 +95,7 @@ const PageQuestion = () => {
                     {
                         answers != {} as AnswersMap ? Object.entries(answers).map(key => {
                             let [id, a] = key;
-                            return <ShowAnswer a={a} key={id} />
+                            return <ShowAnswer a={a} qId={question.id} aId={id} key={id} />
                         }) : <></>}
                     <MakeAnswerToQuestion qId={question.id} />
 

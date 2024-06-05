@@ -3,7 +3,6 @@ import FlexboxGridItem from 'rsuite/esm/FlexboxGrid/FlexboxGridItem';
 import { Question } from '../pieces/Realm.types';
 import ArrowUpLineIcon from '@rsuite/icons/ArrowUpLine';
 import ArrowDownLineIcon from '@rsuite/icons/ArrowDownLine';
-import { Gear, AddOutline } from '@rsuite/icons';
 
 import 'rsuite/Divider/styles/index.css';
 import 'rsuite/Heading/styles/index.css';
@@ -13,6 +12,7 @@ import { EMessageType } from '../services/adena/adena.types';
 import AccountContext from '../context/AccountContext';
 import { useContext } from 'react';
 import config from '../config';
+import ShowScoreAndVote from './ShowScoreAndVote';
 
 const ShowQuestion = ({ q }: { q: Question }) => {
     const { address } = useContext(AccountContext);
@@ -76,14 +76,7 @@ const ShowQuestion = ({ q }: { q: Question }) => {
                 <Row>
                     <Col>
                         <FlexboxGrid style={{ alignItems: "center" }}>
-                            <FlexboxGridItem colspan={2} style={{ display: "grid", placeItems: "center", border: "3px solid black" }}>
-                                <ArrowUpLineIcon style={{ fontSize: "2em" }} onClick={() => { Upvote() }} />
-                                <Heading level={3}>
-                                    {q.score}
-                                </Heading>
-                                <ArrowDownLineIcon style={{ fontSize: "2em" }} onClick={() => { Downvote() }} />
-
-                            </FlexboxGridItem>
+                            <ShowScoreAndVote qId={q.id} id={q.id} answerOrQuestion={"Question"} score={q.score}/>
                             <FlexboxGridItem colspan={22} style={{ padding: "0 20px" }}>
                                 <Link to={`/question/${q.id}`} state={{ qData: q }}>
                                     <Heading level={2}>
