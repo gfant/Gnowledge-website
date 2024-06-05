@@ -13,7 +13,7 @@ import ProviderContext from '../context/ProviderContext';
 import AccountContext from '../context/AccountContext';
 import { AnswersMap, Question } from '../pieces/Realm.types';
 import { parseJSONResponse } from '../pieces/supportFuns';
-import { GoToMakeQuestion } from '../components/GoToMakeQuestion';
+import { SideBar } from '../components/SideBar/SideBar';
 
 const PageQuestion = () => {
     const location = useLocation();
@@ -56,7 +56,7 @@ const PageQuestion = () => {
         <div>
             <FlexboxGrid>
                 <FlexboxGrid.Item colspan={6}>
-                    <GoToMakeQuestion />
+                    <SideBar />
                 </FlexboxGrid.Item>
                 <FlexboxGrid.Item colspan={12}>
                     <Container>

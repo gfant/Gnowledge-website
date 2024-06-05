@@ -11,6 +11,7 @@ import AccountContext from '../context/AccountContext';
 import { AdenaService } from '../services/adena/adena';
 import { EMessageType } from '../services/adena/adena.types';
 import config from '../config';
+import { SideBar } from '../components/SideBar/SideBar';
 
 const PageMakeQuestion = () => {
     const { address } = useContext(AccountContext);
@@ -26,7 +27,7 @@ const PageMakeQuestion = () => {
                         type: EMessageType.MSG_CALL,
                         value: {
                             caller: address,
-                            send: '6',
+                            send: '',
                             pkg_path: config.REALM_PATH,
                             func: 'MakeQuestion',
                             args: [
@@ -39,7 +40,9 @@ const PageMakeQuestion = () => {
                 2000000
             )
             if (response !== null) {
-                console.log("Answer sent!")
+                setQuestion("")
+                setTopics("")
+                console.log("Question sent!")
             }
         }
     }
@@ -48,6 +51,7 @@ const PageMakeQuestion = () => {
         <div>
             <FlexboxGrid>
                 <FlexboxGrid.Item colspan={6}>
+                    <SideBar />
                 </FlexboxGrid.Item>
                 <FlexboxGrid.Item colspan={12}>
                     <Container>
