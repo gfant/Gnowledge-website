@@ -1,4 +1,4 @@
-import Questions from '../components/Questions';
+import Questions from '../components/ViewQuestions';
 import DefaultView from '../components/MainView';
 
 const PageHome = () => {

@@ -8,7 +8,7 @@ import AccountContext from '../context/AccountContext';
 import { useContext, useEffect, useState } from 'react';
 import { parseJSONResponse } from '../pieces/supportFuns';
 import { QuestionsMap } from '../pieces/Realm.types';
-import QuestionShowcase from './QuestionShowcase';
+import QuestionShowcase from './ShowQuestion';
 
 const Questions = () => {
     const { provider } = useContext(ProviderContext);
