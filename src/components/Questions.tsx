@@ -16,30 +16,31 @@ const Questions = () => {
     const [Questions, setQuestions] = useState<QuestionsMap>({} as QuestionsMap)
 
     useEffect(() => {
+        // Calls contract to get exam data
+        const GetQuestions = async () => {
+            if (provider !== null && address !== "") {
+                const fetchData = async () => {
+                    if (provider && address != null) {
+                        provider.evaluateExpression('gno.land/r/dev/gnowledge', `GetQuestions()`)
+                            .then((response: any) => parseJSONResponse(response))
+                            .then((response: string) => JSON.parse(response) as QuestionsMap)
+                            .then((response: QuestionsMap) => { setQuestions(response); })
+                            .catch((error: any) => console.log(error));
+                    };
+                };
+                fetchData();
+            }
+        }
+
         GetQuestions()
     }, [provider, address])
 
 
-    // Calls contract to get exam data
-    const GetQuestions = async () => {
-        if (provider !== null && address !== "") {
-            const fetchData = async () => {
-                if (provider && address != null) {
-                    provider.evaluateExpression('gno.land/r/dev/gnowledge', `GetQuestions()`)
-                        .then((response: any) => parseJSONResponse(response))
-                        .then((response: string) => JSON.parse(response) as QuestionsMap)
-                        .then((response: QuestionsMap) => { setQuestions(response); })
-                        .catch((error: any) => console.log(error));
-                };
-            };
-            fetchData();
-        }
-    }
     return (
         <>
             {Questions !== {} as QuestionsMap ?
                 Object.entries(Questions).map(key => {
-                    let [_, q] = key;
+                    let q = key[1];
                     return <QuestionShowcase q={q} />
                 }) : <></>}
         </>
