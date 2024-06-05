@@ -1,9 +1,8 @@
-import { Button, Col, Container, FlexboxGrid, Heading, HeadingGroup, Row } from 'rsuite';
+import { Container, FlexboxGrid, Heading } from 'rsuite';
 
 import 'rsuite/FlexboxGrid/styles/index.css';
 import 'rsuite/Heading/styles/index.css';
 import 'rsuite/HeadingGroup/styles/index.css';
-import Questions from '../components/Questions';
 import Connect from '../services/adena/connectButton';
 import { Link } from 'react-router-dom';
 import { SideBar } from '../components/SideBar/SideBar';

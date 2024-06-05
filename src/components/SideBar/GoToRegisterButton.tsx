@@ -1,4 +1,4 @@
-import { Button, Col, Row } from "rsuite";
+import { Button } from "rsuite";
 import { AdenaService } from "../../services/adena/adena";
 import { EMessageType } from "../../services/adena/adena.types";
 import config from "../../config";
@@ -7,7 +7,6 @@ import AccountContext from "../../context/AccountContext";
 
 export const GoRegisterMember = () => {
     const { address } = useContext(AccountContext);
-
 
     const RegisterMember = async () => {
         if (address) {
@@ -33,13 +32,7 @@ export const GoRegisterMember = () => {
         }
     };
 
-    return <>
-        <Row>
-            <Col>
-                <Button onClick={RegisterMember}>
-                    Register
-                </Button>
-            </Col>
-        </Row>
-    </>
+    return <Button onClick={RegisterMember}>
+        Register
+    </Button>
 };

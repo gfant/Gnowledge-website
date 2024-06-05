@@ -1,7 +1,5 @@
 import { Button, FlexboxGrid, Input } from 'rsuite';
 
-import 'rsuite/Divider/styles/index.css';
-import 'rsuite/Heading/styles/index.css';
 import FlexboxGridItem from 'rsuite/esm/FlexboxGrid/FlexboxGridItem';
 import { useContext, useState } from 'react';
 import AccountContext from '../context/AccountContext';

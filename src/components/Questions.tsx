@@ -1,5 +1,3 @@
-import { Col, Divider, FlexboxGrid,Grid, Row } from 'rsuite';
-
 import 'rsuite/Header/styles/index.css';
 import 'rsuite/Sidebar/styles/index.css';
 import 'rsuite/Content/styles/index.css';
@@ -10,7 +8,6 @@ import AccountContext from '../context/AccountContext';
 import { useContext, useEffect, useState } from 'react';
 import { parseJSONResponse } from '../pieces/supportFuns';
 import { QuestionsMap } from '../pieces/Realm.types';
-import FlexboxGridItem from 'rsuite/esm/FlexboxGrid/FlexboxGridItem';
 import QuestionShowcase from './QuestionShowcase';
 
 const Questions = () => {
@@ -42,8 +39,8 @@ const Questions = () => {
         <>
             {Questions !== {} as QuestionsMap ?
                 Object.entries(Questions).map(key => {
-                    let [id, q] = key;
-                    return <QuestionShowcase q={q}/>
+                    let [_, q] = key;
+                    return <QuestionShowcase q={q} />
                 }) : <></>}
         </>
     );

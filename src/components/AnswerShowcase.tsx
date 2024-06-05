@@ -4,10 +4,6 @@ import { Answer} from '../pieces/Realm.types';
 import 'rsuite/Divider/styles/index.css';
 import 'rsuite/Heading/styles/index.css';
 import { Link } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
-import ProviderContext from '../context/ProviderContext';
-import AccountContext from '../context/AccountContext';
-import { parseJSONResponse } from '../pieces/supportFuns';
 
 const AnswerShowcase = ({ a }: { a: Answer }) => {
 

@@ -1,5 +1,3 @@
-import forge from 'node-forge';
-
 export const parseResponse = (response: string): string => {
     const regex = /"([^"]*)"/;
     const match = response.match(regex);
@@ -16,6 +14,6 @@ export const parseJSONResponse = (response: string): string => {
     let right = content.length
     while (0 < right && content[right] != "}") right -= 1
     while (left < content.length && content[left] != "{") left += 1
-    content = content.substring(left, right+1);
+    content = content.substring(left, right + 1);
     return content
 }

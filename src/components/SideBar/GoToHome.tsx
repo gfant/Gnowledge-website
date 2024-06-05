@@ -1,4 +1,4 @@
-import { Button, Col, Row } from "rsuite";
+import { Button } from "rsuite";
 import { useNavigate } from 'react-router-dom';
 
 export const GoToHome = () => {

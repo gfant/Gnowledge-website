@@ -1,4 +1,4 @@
-import { Button, Col, Row } from "rsuite";
+import { Button } from "rsuite";
 import { useNavigate } from 'react-router-dom';
 
 export const GoToMakeQuestion = () => {
@@ -8,13 +8,7 @@ export const GoToMakeQuestion = () => {
         navigate('/make-question');
     };
 
-    return <>
-        <Row>
-            <Col>
-                <Button onClick={GoToPath}>
-                    Make Question
-                </Button>
-            </Col>
-        </Row>
-    </>
+    return <Button onClick={GoToPath}>
+        Make Question
+    </Button>
 };
