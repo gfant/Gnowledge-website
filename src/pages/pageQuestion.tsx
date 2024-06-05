@@ -7,8 +7,8 @@ import Connect from '../services/adena/connectButton';
 import { Link, useLocation } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import FlexboxGridItem from 'rsuite/esm/FlexboxGrid/FlexboxGridItem';
-import AnswerQuestion from '../components/MakeAnswerToQuestion';
-import AnswerShowcase from '../components/ShowAnswer';
+import MakeAnswerToQuestion from '../components/MakeAnswerToQuestion';
+import ShowAnswer from '../components/ShowAnswer';
 import ProviderContext from '../context/ProviderContext';
 import AccountContext from '../context/AccountContext';
 import { AnswersMap, Question } from '../pieces/Realm.types';
@@ -98,9 +98,9 @@ const PageQuestion = () => {
                     {
                         answers != {} as AnswersMap ? Object.entries(answers).map(key => {
                             let [id, a] = key;
-                            return <AnswerShowcase a={a} key={id} />
+                            return <ShowAnswer a={a} key={id} />
                         }) : <></>}
-                    <AnswerQuestion qId={question.id} />
+                    <MakeAnswerToQuestion qId={question.id} />
 
                 </FlexboxGrid.Item>
 

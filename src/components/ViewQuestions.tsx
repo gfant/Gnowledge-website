@@ -10,7 +10,7 @@ import { parseJSONResponse } from '../pieces/supportFuns';
 import { QuestionsMap } from '../pieces/Realm.types';
 import QuestionShowcase from './ShowQuestion';
 
-const Questions = () => {
+const ViewQuestions = () => {
     const { provider } = useContext(ProviderContext);
     const { address } = useContext(AccountContext);
     const [Questions, setQuestions] = useState<QuestionsMap>({} as QuestionsMap)
@@ -47,4 +47,4 @@ const Questions = () => {
     );
 };
 
-export default Questions;
+export default ViewQuestions;

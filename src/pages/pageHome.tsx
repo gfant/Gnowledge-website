@@ -1,9 +1,9 @@
-import Questions from '../components/ViewQuestions';
+import ViewQuestions from '../components/ViewQuestions';
 import DefaultView from '../components/MainView';
 
 const PageHome = () => {
     return (
-        <DefaultView component={Questions}/>
+        <DefaultView component={ViewQuestions}/>
     );
 };
 

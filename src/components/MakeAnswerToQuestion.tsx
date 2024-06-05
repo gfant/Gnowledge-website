@@ -7,7 +7,7 @@ import { AdenaService } from '../services/adena/adena';
 import { EMessageType } from '../services/adena/adena.types';
 import config from '../config';
 
-const AnswerQuestion = ({ qId }: { qId: string }) => {
+const MakeAnswerToQuestion = ({ qId }: { qId: string }) => {
     const { address } = useContext(AccountContext);
     const [qAnswer, setQAnswer] = useState("")
     
@@ -49,4 +49,4 @@ const AnswerQuestion = ({ qId }: { qId: string }) => {
     </>
 };
 
-export default AnswerQuestion;
+export default MakeAnswerToQuestion;

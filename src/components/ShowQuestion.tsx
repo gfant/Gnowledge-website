@@ -14,7 +14,7 @@ import AccountContext from '../context/AccountContext';
 import { useContext } from 'react';
 import config from '../config';
 
-const QuestionShowcase = ({ q }: { q: Question }) => {
+const ShowQuestion = ({ q }: { q: Question }) => {
     const { address } = useContext(AccountContext);
 
     const author = q.author.substring(0, 6) + "..." + q.author.substring(q.author.length - 6, q.author.length)
@@ -108,4 +108,4 @@ const QuestionShowcase = ({ q }: { q: Question }) => {
     );
 };
 
-export default QuestionShowcase;
+export default ShowQuestion;

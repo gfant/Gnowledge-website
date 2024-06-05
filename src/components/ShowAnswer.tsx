@@ -5,7 +5,7 @@ import 'rsuite/Divider/styles/index.css';
 import 'rsuite/Heading/styles/index.css';
 import { Link } from 'react-router-dom';
 
-const AnswerShowcase = ({ a }: { a: Answer }) => {
+const ShowAnswer = ({ a }: { a: Answer }) => {
 
     const author = a.author.substring(0, 6) + "..." + a.author.substring(a.author.length - 6, a.author.length)
     return (
@@ -43,4 +43,4 @@ const AnswerShowcase = ({ a }: { a: Answer }) => {
     );
 };
 
-export default AnswerShowcase;
+export default ShowAnswer;
