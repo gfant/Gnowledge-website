@@ -1,10 +1,10 @@
-import { Container, Divider, FlexboxGrid, Heading, HeadingGroup } from 'rsuite';
+import { Container, Divider, FlexboxGrid, Heading } from 'rsuite';
 
 import 'rsuite/FlexboxGrid/styles/index.css';
 import 'rsuite/Heading/styles/index.css';
 import 'rsuite/HeadingGroup/styles/index.css';
 import Connect from '../services/adena/connectButton';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import FlexboxGridItem from 'rsuite/esm/FlexboxGrid/FlexboxGridItem';
 import AnswerQuestion from '../components/AnswerQuestion';
@@ -13,6 +13,7 @@ import ProviderContext from '../context/ProviderContext';
 import AccountContext from '../context/AccountContext';
 import { AnswersMap, Question } from '../pieces/Realm.types';
 import { parseJSONResponse } from '../pieces/supportFuns';
+import { GoToMakeQuestion } from '../components/GoToMakeQuestion';
 
 const PageQuestion = () => {
     const location = useLocation();
@@ -54,7 +55,9 @@ const PageQuestion = () => {
     return (
         <div>
             <FlexboxGrid>
-                <FlexboxGrid.Item colspan={6}></FlexboxGrid.Item>
+                <FlexboxGrid.Item colspan={6}>
+                    <GoToMakeQuestion />
+                </FlexboxGrid.Item>
                 <FlexboxGrid.Item colspan={12}>
                     <Container>
                         <Link to="/">
